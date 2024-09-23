@@ -12,7 +12,7 @@ import umpisa.restaurant.reservation.services.ReservationService;
 
 import java.util.List;
 
-@Slf4j
+
 @RequiredArgsConstructor
 @RestController
 public class ReservationController {
@@ -62,7 +62,7 @@ public class ReservationController {
 
         reservationService.updateReservationById(reservationId, reservationDTO);
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return ResponseEntity.ok("Reservation has been updated.");
     }
 
     @DeleteMapping(RESERVATION_PATH_ID)
@@ -70,7 +70,7 @@ public class ReservationController {
 
         reservationService.cancelReservation(reservationId);
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return ResponseEntity.ok("Reservation has been cancelled.");
     }
 
 }

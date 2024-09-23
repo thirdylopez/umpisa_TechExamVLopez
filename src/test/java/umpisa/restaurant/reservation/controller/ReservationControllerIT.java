@@ -81,7 +81,7 @@ class ReservationControllerIT {
         reservationDTO.setReservationDateTime(newReservationDate);
 
         ResponseEntity responseEntity = reservationController.updateReservationById(reservation.getId(), reservationDTO);
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(204));
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(200));
 
         Reservation updatedReservation = reservationRepository.findById(reservation.getId()).get();
         assertThat(updatedReservation.getNumberOfGuests()).isEqualTo(numOfGuests);
@@ -102,7 +102,7 @@ class ReservationControllerIT {
         Reservation reservation = reservationRepository.findAll().get(0);
 
         ResponseEntity responseEntity = reservationController.cancelReservationById(reservation.getId());
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(204));
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatusCode.valueOf(200));
 
         assertThat(reservationRepository.findById(reservation.getId()).isEmpty());
 

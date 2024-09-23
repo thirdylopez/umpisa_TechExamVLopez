@@ -2,6 +2,7 @@ package umpisa.restaurant.reservation.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.NonFinal;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -33,11 +34,8 @@ public class Reservation {
     private String preferredMethod;
     private Integer numberOfGuests;
     @Column(updatable = false)
-    @CreatedDate
     private LocalDateTime createdDate;
-    @LastModifiedDate
     private LocalDateTime updateDate;
-    @Column(nullable = false, columnDefinition = "boolean default true")
     private boolean isActive;
 
 

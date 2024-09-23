@@ -8,9 +8,6 @@ import umpisa.restaurant.reservation.repositories.ReservationRepository;
 
 import java.time.LocalDateTime;
 
-/**
- * Created by jt, Spring Framework Guru.
- */
 @Component
 @RequiredArgsConstructor
 public class BootstrapData implements CommandLineRunner {
@@ -23,9 +20,8 @@ public class BootstrapData implements CommandLineRunner {
     }
 
 
-
-    private void loadReservationData(){
-        if(reservationRepository.count() == 0){
+    private void loadReservationData() {
+        if (reservationRepository.count() == 0) {
             Reservation reservation1 = Reservation.builder()
                     .id(1L)
                     .version(1)
@@ -33,7 +29,7 @@ public class BootstrapData implements CommandLineRunner {
                     .email("tony.smith@yahoo.com")
                     .phoneNumber("+639170000000")
                     .preferredMethod("E")
-                    .reservationDateTime(LocalDateTime.of(2024, 8, 24,17,30))
+                    .reservationDateTime(LocalDateTime.of(2024, 8, 24, 17, 30))
                     .createdDate(LocalDateTime.now())
                     .updateDate(LocalDateTime.now())
                     .numberOfGuests(2)
@@ -47,7 +43,7 @@ public class BootstrapData implements CommandLineRunner {
                     .email("pocahontas@yahoo.com")
                     .phoneNumber("+639170000000")
                     .preferredMethod("E")
-                    .reservationDateTime(LocalDateTime.of(2024, 9, 24,18,30))
+                    .reservationDateTime(LocalDateTime.of(2024, 9, 24, 18, 30))
                     .createdDate(LocalDateTime.now())
                     .updateDate(LocalDateTime.now())
                     .isActive(true)
@@ -61,7 +57,7 @@ public class BootstrapData implements CommandLineRunner {
                     .email("olaf@yahoo.com")
                     .phoneNumber("+639170000000")
                     .preferredMethod("E")
-                    .reservationDateTime(LocalDateTime.of(2024, 9, 24,19,30))
+                    .reservationDateTime(LocalDateTime.of(2024, 9, 24, 19, 30))
                     .createdDate(LocalDateTime.now())
                     .updateDate(LocalDateTime.now())
                     .numberOfGuests(2)
@@ -74,7 +70,7 @@ public class BootstrapData implements CommandLineRunner {
                     .version(1)
                     .phoneNumber("+639170000005")
                     .preferredMethod("M")
-                    .reservationDateTime(LocalDateTime.of(2024, 9, 24,19,30))
+                    .reservationDateTime(LocalDateTime.of(2024, 9, 24, 19, 30))
                     .createdDate(LocalDateTime.now())
                     .updateDate(LocalDateTime.now())
                     .numberOfGuests(2)
