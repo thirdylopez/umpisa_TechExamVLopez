@@ -1,9 +1,9 @@
 package umpisa.restaurant.reservation.bootstrap;
 
-import umpisa.restaurant.reservation.entities.Reservation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import umpisa.restaurant.reservation.entities.Reservation;
 import umpisa.restaurant.reservation.repositories.ReservationRepository;
 
 import java.time.LocalDateTime;

@@ -1,7 +1,6 @@
 package umpisa.restaurant.reservation.services;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import umpisa.restaurant.reservation.controller.NotFoundException;

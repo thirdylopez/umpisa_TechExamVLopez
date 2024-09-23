@@ -2,12 +2,8 @@ package umpisa.restaurant.reservation.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.NonFinal;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
 @Getter

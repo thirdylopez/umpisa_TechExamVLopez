@@ -1,12 +1,9 @@
 package umpisa.restaurant.reservation.controller;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import umpisa.restaurant.reservation.entities.Reservation;
 import umpisa.restaurant.reservation.model.ReservationDTO;
 import umpisa.restaurant.reservation.services.ReservationService;
 
@@ -25,12 +22,12 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     @GetMapping(value = RESERVATION_PATH)
-    public List<ReservationDTO> viewReservations(){
+    public List<ReservationDTO> viewReservations() {
         return reservationService.viewReservations();
     }
 
     @PostMapping(RESERVATION_PATH)
-    public ResponseEntity<String> createReservation(@RequestBody ReservationDTO reservationDTO){
+    public ResponseEntity<String> createReservation(@RequestBody ReservationDTO reservationDTO) {
 
 
         ReservationDTO savedReservationDTO = reservationService.saveNewReservation(reservationDTO);
@@ -50,15 +47,15 @@ public class ReservationController {
                 + savedReservationDTO.getReservationDateTime().getMinute());
 
         if (savedReservationDTO.getPreferredMethod().equals("M")) {
-            return "Sent SMS - " + resultString.toString();
+            return "Sent SMS - " + resultString;
         } else {
-            return "Sent Email - " + resultString.toString();
+            return "Sent Email - " + resultString;
         }
     }
 
     @PutMapping(RESERVATION_PATH_ID)
     public ResponseEntity updateReservationById(@PathVariable("reservationId") Long reservationId,
-                                            @RequestBody ReservationDTO reservationDTO){
+                                                @RequestBody ReservationDTO reservationDTO) {
 
         reservationService.updateReservationById(reservationId, reservationDTO);
 
@@ -66,7 +63,7 @@ public class ReservationController {
     }
 
     @DeleteMapping(RESERVATION_PATH_ID)
-    public ResponseEntity cancelReservationById(@PathVariable("reservationId") Long reservationId){
+    public ResponseEntity cancelReservationById(@PathVariable("reservationId") Long reservationId) {
 
         reservationService.cancelReservation(reservationId);
 
