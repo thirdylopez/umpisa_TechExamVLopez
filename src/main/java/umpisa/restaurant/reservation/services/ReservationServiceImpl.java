@@ -11,6 +11,7 @@ import umpisa.restaurant.reservation.repositories.ReservationRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 
@@ -48,7 +49,9 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void updateReservationById(Long reservationId, ReservationDTO reservationDTO) {
+    public ReservationDTO updateReservationById(Long reservationId, ReservationDTO reservationDTO) {
+        AtomicReference<ReservationDTO> reservationDTOAtomicReference = new AtomicReference<>();
+
         reservationRepository.findById(reservationId).ifPresentOrElse(foundReservation -> {
             if (!ObjectUtils.isEmpty(reservationDTO.getNumberOfGuests())) {
                 foundReservation.setNumberOfGuests(reservationDTO.getNumberOfGuests());
@@ -57,10 +60,12 @@ public class ReservationServiceImpl implements ReservationService {
                 foundReservation.setReservationDateTime(reservationDTO.getReservationDateTime());
             }
             foundReservation.setUpdateDate(LocalDateTime.now());
-            reservationMapper.reservationToReservationDTO(reservationRepository.save(foundReservation));
+            reservationDTOAtomicReference.set(reservationMapper.reservationToReservationDTO(reservationRepository.save(foundReservation)));
         }, () -> {
             throw new NotFoundException("Reservation was not found");
         });
+
+        return reservationDTOAtomicReference.get();
     }
 
     @Override
